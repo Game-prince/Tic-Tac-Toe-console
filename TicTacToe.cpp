@@ -19,8 +19,8 @@ struct Player
 
 int main()
 {
-	std::cout << "\n\n\t\tWelcome to TicTacToe\n";
-	std::cout << "\n\n\t\tYou have been chosen to play this game\n";
+	std::cout << "\t\tWelcome to TicTacToe\n";
+	std::cout << "\t\tYou have been chosen to play this game\n";
 
 	// Main Loop
 	while (true) {
@@ -29,7 +29,7 @@ int main()
 		Player player1{}, player2{};
 
 		std::cout << "Choose one option\n";
-		std::cout << "1. Start\n2.Exit\n";
+		std::cout << "1. Start\n2. Exit\n";
 		std::cout << "Enter 1 or 2\n";
 		playerChoice = getPlayerChoice();
 
@@ -58,7 +58,7 @@ int main()
 
 		system("CLS");
 
-		std::cout << "\n\n\t\tToss\n";
+		std::cout << "\t\tToss\n";
 		std::cout << "Choose one option\n";
 		std::cout << "1. Heads\n2. Tails\n";
 		playerChoice = getPlayerChoice();
@@ -77,7 +77,7 @@ int main()
 			playerTurn = 2;
 		}
 
-		std::cout << "Press 1 to continue\n";
+		std::cout << "\nPress 1 to continue\n";
 		playerChoice = getPlayerChoice();
 
 		if (playerChoice != 1) break;
@@ -90,6 +90,31 @@ int main()
 		{
 			system("cls");
 
+			// check if the game is over
+			int gameStatus = board.isGameOver();
+			if (gameStatus != 0) {
+				std::cout << "Game Over!\n";
+
+				if (gameStatus == 1) {
+					if (playerTurn == 1) std::cout << "Player1 wins\n";
+					else std::cout << "Player2 wins\n";
+				}
+				else {
+					std::cout << "It's a draw\n";
+				}
+
+				std::cout << "\nPress 1 to continue\n";
+				playerChoice = getPlayerChoice();
+
+				while (playerChoice != 1)
+				{
+					std::cout << "Incorrect choice\nPlease Choose again\n";
+					playerChoice = getPlayerChoice();
+				}
+
+				break;
+			}
+
 			std::cout << "Player1 : " << (char)player1.value << "\t\tPlayer2 : " << (char)player2.value << "\n\n";
 
 			if (playerTurn == 1) {
@@ -100,14 +125,12 @@ int main()
 				std::cout << "Player2's Turn\n";
 				currentPlayer = player2;
 			}
-
 			std::cout << std::endl;
 			board.display();
 			std::cout << std::endl;
 
 			std::vector<int> emptyCells = board.getEmptyCells();
-			if (emptyCells.size() == 0) break;
-			std::cout << "Empty Cells\n";
+			std::cout << "Empty Cells: ";
 			for (int i : emptyCells) std::cout << i << " ";
 			std::cout << std::endl;
 
@@ -122,5 +145,7 @@ int main()
 			if (playerTurn == 1) playerTurn = 2;
 			else playerTurn = 1;
 		}
+
+		system("cls");
 	}
 }
