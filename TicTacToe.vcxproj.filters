@@ -27,14 +27,14 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Base.cpp">
-      <Filter>Source Files\states</Filter>
-    </ClCompile>
     <ClCompile Include="Start.cpp">
       <Filter>Source Files\states</Filter>
     </ClCompile>
     <ClCompile Include="statemachine.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="State.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,23 +1,28 @@
 #include <iostream>
 #include <map>
-#include "Base.cpp"
+#include "State.h"
 
 class StateMachine {
 private:
-	State *currentState;
+	std::unique_ptr<State> currentState;
 public:
 		
-	StateMachine() {
-		currentState = new State();
-	}
+	StateMachine() : currentState(std::make_unique<State>()) {}
 
-	void change(State state) {
+	bool change(State *newState) {
 		currentState->exit();
-		*currentState = state;
+		// change current state
+		currentState.reset(newState);
 		currentState->enter();
+
+		return true;
 	}
 
 	void render() {
+		if (!currentState) {
+			std::cout << "Current state is still NULL" << std::endl;
+			return;
+		}
 		currentState->render();
 	}
 

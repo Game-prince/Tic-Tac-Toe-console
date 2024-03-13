@@ -127,10 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Base.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Start.cpp" />
+    <ClCompile Include="State.h" />
     <ClCompile Include="statemachine.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
