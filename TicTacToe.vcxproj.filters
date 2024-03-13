@@ -36,5 +36,8 @@
     <ClCompile Include="State.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Play.cpp">
+      <Filter>Source Files\states</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
