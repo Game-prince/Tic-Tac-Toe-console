@@ -21,7 +21,7 @@ int main() {
 
 
 	StateMachine statemachine;
-	State *startState = new StartState();
+	State* startState = new StartState();
 	if (!statemachine.change(startState)) {
 		std::cerr << "Error creating StartState" << std::endl;
 		return 1;

@@ -10,6 +10,12 @@ public:
 	StateMachine() : currentState(std::make_unique<State>()) {}
 
 	bool change(State *newState) {
+
+		if (!newState) {
+			std::cerr << "Error: new state is NULL" << std::endl;
+			return false;
+		}
+
 		currentState->exit();
 		// change current state
 		currentState.reset(newState);
